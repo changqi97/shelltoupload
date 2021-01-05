@@ -11,9 +11,10 @@ pathlist = []
 all_num = 0
 with open('../DX_dir/{}/{}_{}.txt'.format(args.dir,args.dir,args.num),'r') as f:
     all_num+=1
-    line = f.readlines()
-    _,filename,foldername,_,_ = line.split(' ')
-    pathlist.append('/data/{}_{}/{}/{}'.format(args.dir,args.num,filename,foldername))
+    lines = f.readlines()
+    for index,line in enumerate(lines,1):
+        _,filename,foldername,_,_ = line.split(' ')
+        pathlist.append('/data/{}_{}/{}/{}'.format(args.dir,args.num,filename,foldername))
 
 print(pathlist)
 query_nums = 10
