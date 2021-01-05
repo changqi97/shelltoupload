@@ -14,12 +14,12 @@ with open('../DX_dir/{}/{}_{}.txt'.format(args.dir,args.dir,args.num),'r') as f:
         _,filename,foldername,_,_ = line.split('\t')
         pathlist.append('/data/{}_{}/{}/{}'.format(args.dir,args.num,foldername,filename))
 
-print(pathlist)
+#print(pathlist)
 query_nums = 10
 while len(pathlist) and query_nums:
     query_nums -= 1
     for i in pathlist:
-        if os.path.exist(i):
+        if os.path.exists(i):
             pathlist.remove(i)
         else:
             time.sleep(5)
