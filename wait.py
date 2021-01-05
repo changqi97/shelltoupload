@@ -9,10 +9,10 @@ args = parser.parse_args()
 
 pathlist = []
 all_num = 0
-with open('~/gdc_downloader/DX_dir/{}/{}_{}.txt'.format(args.dir,args.dir,args.num),'r') as f:
+with open('../DX_dir/{}/{}_{}.txt'.format(args.dir,args.dir,args.num),'r') as f:
     all_num+=1
-    lines = f.readlines()
-    _,filename,foldername,_,_ = lines.split(' ')
+    line = f.readlines()
+    _,filename,foldername,_,_ = line.split(' ')
     pathlist.append('/data/{}_{}/{}/{}'.format(args.dir,args.num,filename,foldername))
 
 print(pathlist)
