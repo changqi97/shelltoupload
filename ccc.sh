@@ -15,7 +15,7 @@ cd ~/gdc_downloader/DX_dir/$1
 echo "$1_$2.txt"
 mkdir /data/$1_$2/
 gdc-client download -m $1_$2.txt -d /data/$1_$2
-python wait.py --dir $1 --num $2
+python ~/gdc_downloader/shellupload/wait.py --dir $1 --num $2
 cd ~
 mkdir /onedrive/DX/$1_$2
 ./rclone copy /data/$1_$2 /onedrive/DX/$1_$2
