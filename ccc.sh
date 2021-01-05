@@ -13,7 +13,7 @@ source activate py37
 python --version
 echo "$1_$2.txt"
 mkdir /data/$1_$2/
-gdc-client download -m ../DX_dir/$1_$2.txt -d /data/$1_$2
+gdc-client download -m ../DX_dir/$1/$1_$2.txt -d /data/$1_$2
 python wait.py --dir $1 --num $2
 cd ~
 mkdir /onedrive/DX_test/$1_$2

@@ -8,13 +8,11 @@ parser.add_argument('--num', type=int)
 args = parser.parse_args()
 
 pathlist = []
-all_num = 0
 with open('../DX_dir/{}/{}_{}.txt'.format(args.dir,args.dir,args.num),'r') as f:
-    all_num+=1
     lines = f.readlines()
     for index,line in enumerate(lines,1):
-        _,filename,foldername,_,_ = line.split(' ')
-        pathlist.append('/data/{}_{}/{}/{}'.format(args.dir,args.num,filename,foldername))
+        _,filename,foldername,_,_ = line.split('\t')
+        pathlist.append('/data/{}_{}/{}/{}'.format(args.dir,args.num,foldername,filename))
 
 print(pathlist)
 query_nums = 10
