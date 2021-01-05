@@ -11,11 +11,10 @@
 
 source activate py37
 python --version
-cd ~/gdc_downloader/DX_dir/$1
 echo "$1_$2.txt"
 mkdir /data/$1_$2/
-gdc-client download -m $1_$2.txt -d /data/$1_$2
-python ~/gdc_downloader/shellupload/wait.py --dir $1 --num $2
+gdc-client download -m ~/gdc_downloader/DX_dir/$1_$2.txt -d /data/$1_$2
+python wait.py --dir $1 --num $2
 cd ~
 mkdir /onedrive/DX_test/$1_$2
 ./rclone copy /data/$1_$2 /onedrive/DX_test/$1_$2
