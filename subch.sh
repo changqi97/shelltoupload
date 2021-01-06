@@ -28,7 +28,7 @@ python upsplit.py --dir $upname
 echo "2:$upname upload begin"
 for I in {0..6};do
     sleep 5
-    tmux new -s up$I_$upname -d
+    tmux new -s up$I$upname -d
     tmux send-keys -t up$I_$upname.0 "bash ./upload.sh $upname $I" Enter
 done
 echo "2:$downname download done | $upname upload done"
