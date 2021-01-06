@@ -9,6 +9,7 @@ Email: changqi97@gmail.com
 '''
 import os
 import shutil
+import argparse
 
 parser = argparse.ArgumentParser(description='Eyeball status classification')
 parser.add_argument('--dir', type=str)
