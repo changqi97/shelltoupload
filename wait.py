@@ -1,3 +1,12 @@
+'''
+Descripttion: 
+version: 
+Author: Chang Qi
+Date: 2021-01-06 10:24:58
+LastEditors: Chang Qi
+LastEditTime: 2021-01-06 11:44:14
+Email: changqi97@gmail.com
+'''
 import argparse
 import os
 import time
@@ -22,6 +31,7 @@ while len(pathlist) and query_nums:
         if os.path.exists(i):
             pathlist.remove(i)
         else:
+            print(query_nums)
             time.sleep(5)
 
 with open('../log/{}_{}_log.txt'.format(args.dir,args.num),'a') as fout:
