@@ -5,33 +5,30 @@
  # @Author: Chang Qi
  # @Date: 2021-01-05 16:26:34
  # @LastEditors: Chang Qi
- # @LastEditTime: 2021-01-06 11:29:26
+ # @LastEditTime: 2021-01-06 15:00:14
  # @Email: changqi97@gmail.com
 ###
 upname=$2
-txtname=$1
-result=${txtname%%.*} 
+downname=$1
 
 
-echo "2:$result download begin"
-sleep 10
+echo "2:$downname download begin"
+sleep 5
+tmux new -s down0_$downname -d
+tmux send-keys -t down0_$downname.0 "bash ./ccc.sh $downname 0" Enter
+sleep 5
+tmux new -s down1_$downname -d
+tmux send-keys -t down1_$downname.0 "bash ./ccc.sh $downname 1" Enter
+sleep 5
+tmux new -s down2_$downname -d
+tmux send-keys -t down2_$downname.0 "bash ./ccc.sh $downname 2" Enter
+sleep 5
 
-bash ./ccc.sh $result 0 &
-bash ./ccc.sh $result 1 &
-bash ./ccc.sh $result 2 &
-
-for I in {0..2};do
-    sleep 3
-    echo "2:$upname $I upload begin"
-    bash ./upload.sh $upname $I &
+python upsplit.py --dir $upname
+echo "2:$upname upload begin"
+for I in {0..6};do
+    sleep 5
+    tmux new -s up$I_$upname -d
+    tmux send-keys -t up$I_$upname.0 "bash ./upload.sh $upname $I" Enter
 done
-
-pid=$!
-echo "2:(pid=${pid})begin"
-sleep 10
-wait ${pid}
-python wait.py --dir $result --num 0 &
-python wait.py --dir $result --num 1 &
-python wait.py --dir $result --num 2 &
-
-echo "2:$result sleep done"
+echo "2:$downname download done | $upname upload done"
