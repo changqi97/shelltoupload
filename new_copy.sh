@@ -15,6 +15,7 @@ echo "download_begin"
 file1=$1
 file2=$2
 
+rm -rf ../DX_dir/$file2
 python split.py --dir $file2
 bash ./subch.sh $file2 $file1
 echo "$file2 $file1:done"

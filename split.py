@@ -17,10 +17,15 @@ parser.add_argument('--dir', type=str)
 args = parser.parse_args()
 
 # _,txtname = os.path.split(args.dir)
-os.makedirs('../DX_dir/{}'.format(args.dir),exist_ok=True)
+os.mkdir('../DX_dir/{}'.format(args.dir))
 
 with open('../DX/{}.txt'.format(args.dir),'r')as f:
     lines = f.readlines()
-    for index,line in enumerate(lines,1):
-        with open('../DX_dir/{}/{}_{}.txt'.format(args.dir,args.dir,index%3),'a+')as tmp:
-            tmp.write(line)
+    for index,line in enumerate(lines):
+        if index==0:
+            for i in range(2):
+                 with open('../DX_dir/{}/{}_{}.txt'.format(args.dir,args.dir,i),'a+')as tmp:
+                    tmp.write(line)
+        else:
+            with open('../DX_dir/{}/{}_s{}.txt'.format(args.dir,args.dir,index%3),'a+')as tmp:
+                tmp.write(line)

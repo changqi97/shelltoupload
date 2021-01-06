@@ -8,7 +8,11 @@
  # @Email: changqi97@gmail.com
 ### 
 
+file=$1
+
 echo "tttt"
-tmux new -s test1 -d
-tmux send-keys -t test1.0 "bash testt.sh" Enter
+for I in {0..3};do
+    tmux new -s test1$I$file -d
+    tmux send-keys -t test1$I$file.0 "bash testt.sh $I" Enter
+done
 echo "done"

@@ -8,7 +8,9 @@
  # @Email: changqi97@gmail.com
 ### 
 
-for I in {0..10000};do
+get=$1
+
+for I in {0..100};do
     echo "$I"
 done
-echo "donedone"
+echo "$1 donedone"
