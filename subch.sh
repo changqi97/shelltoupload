@@ -26,7 +26,7 @@ sleep 5
 
 python upsplit.py --dir $upname
 echo "2:$upname upload begin"
-for I in {0..6};do
+for I in {0..5};do
     sleep 5
     tmux new -s up$I$upname -d
     tmux send-keys -t up$I$upname.0 "bash ./upload.sh $upname $I" Enter

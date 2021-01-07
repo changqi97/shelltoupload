@@ -8,7 +8,6 @@
  # @Email: changqi97@gmail.com
 ### 
 cd ~
-mkdir onedrive/DX_new/$1_$2
 echo "upload begin"
 ./rclone copy /data/$1_$2 /onedrive/DX_new/$1_$2
 echo "$1_$2_download_upload_done"
