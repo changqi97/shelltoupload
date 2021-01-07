@@ -1,13 +1,10 @@
-###
- # @Descripttion: 
- # @version: 
- # @Author: Chang Qi
- # @Date: 2021-01-06 11:24:59
- # @LastEditors: Chang Qi
- # @LastEditTime: 2021-01-06 19:23:32
- # @Email: changqi97@gmail.com
-### 
-cd ~
-echo "upload begin"
-./rclone copy /data/$1_$2 /onedrive/DX_new/$1_$2
-echo "$1_$2_download_upload_done"
+echo "$upname upload begin"
+upname=$1
+python upsplit.py --dir $upname
+sleep 5
+for I in {0..5};do
+    sleep 5
+    tmux new -s up$I$upname -d
+    tmux send-keys -t up$I$upname.0 "bash ./subup.sh $upname $I" Enter
+done
+echo "2:$downname download done | $upname upload done"

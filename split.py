@@ -11,7 +11,7 @@ Email: changqi97@gmail.com
 import argparse
 import os
 
-parser = argparse.ArgumentParser(description='Eyeball status classification')
+parser = argparse.ArgumentParser(description='splitDXtxt')
 parser.add_argument('--dir', type=str)
 
 args = parser.parse_args()
@@ -23,9 +23,9 @@ with open('../DX/{}.txt'.format(args.dir),'r')as f:
     lines = f.readlines()
     for index,line in enumerate(lines):
         if index==0:
-            for i in range(3):
+            for i in range(6):
                  with open('../DX_dir/{}/{}_{}.txt'.format(args.dir,args.dir,i),'a+')as tmp:
                     tmp.write(line)
         else:
-            with open('../DX_dir/{}/{}_{}.txt'.format(args.dir,args.dir,index%3),'a+')as tmp:
+            with open('../DX_dir/{}/{}_{}.txt'.format(args.dir,args.dir,index%6),'a+')as tmp:
                 tmp.write(line)
